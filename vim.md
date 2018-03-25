@@ -33,3 +33,21 @@ Abbreviated versions of commands can be used when they don't conflict with abbre
 :buff 2
 :buf 2
 ```
+
+# Windows, splits, and tabs
+
+### Resizing splits
+```
+" set the window width to 80 columns
+:vertical resize 80
+
+" increase/decrease the window width by 5 columns
+:vertical resize +5
+:vertical resize -5
+
+" set the window height to 100 rows
+:resize 80
+
+" increase/decrease the window height by 5 rows
+:resize +5
+:resize -5
