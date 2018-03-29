@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Commits staged files, generating a commit message based on the modified files.
+
+message="$@"
+
+# Given a git diff filter (e.g. A, M), prints the base files names
+# (just the directory, or the file name without extension) of the
+# staged files matching the filter.
+# TODO: only removes .md file extensions
+function base_file_names_with_filter {
+  git diff --staged --name-only --diff-filter=$1 | xargs | sed 's/\/[^ ]*//g' | sed 's/\.md//g'
+}
+
+new_files=(`base_file_names_with_filter A`)
+modified_files=(`base_file_names_with_filter M`)
+echo new ${#new_files[@]}
+echo mod ${#modified_files[@]}
+
+base_message=''
+if [[ ${#new_files[@]} -gt 0 && ${#modified_files[@]} -gt 0 ]]; then
+  base_message="(☑ ${new_files[@]}, ♲ ${modified_files[@]})"
+elif [[ ${#new_files[@]} -gt 0 ]]; then
+  base_message="☑ ${new_files[@]}"
+elif [[ ${#modified_files[@]} -gt 0 ]]; then
+  base_message="♲ ${modified_files[@]}"
+else
+  echo "Error: no new or updated files"
+  exit 1
+fi
+
+commit_message="$base_message: $message"
+git commit -m "$commit_message"
