@@ -37,7 +37,7 @@ Abbreviated versions of commands can be used when they don't conflict with abbre
 # Windows, splits, and tabs
 
 ### Resizing splits
-```
+```vim
 " set the window width to 80 columns
 :vertical resize 80
 
@@ -51,3 +51,20 @@ Abbreviated versions of commands can be used when they don't conflict with abbre
 " increase/decrease the window height by 5 rows
 :resize +5
 :resize -5
+```
+
+### Swapping the position of panes
+```
++----+--------+         +--------+----+
+|    |        |         |        |    |
+|    |        |         |        |    |
+| A  |    B   |  +--->  |   A    |  B |
+|    |        |         |        |    |
+|    |        |         |        |    |
+|    |        |         |        |    |
++----+--------+         +--------+----+
+```
+
+> Swap the position of panes
+
+<kbd>Ctrl</kbd><kbd>w</kbd> + <kbd>r</kbd>
