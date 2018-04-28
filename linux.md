@@ -64,3 +64,13 @@ plugins=ifupdown,keyfile
 managed=true
 EOF
 ```
+
+3. Install NetworkManager plugins
+```bash
+sudo apt-get install network-manager-openvpn network-manager network-manager-gnome network-manager-openvpn-gnome
+```
+
+4. **[If it doesn't work]** Link auth helpers to NetworkManager directory. This step won't work if the auth helpers were installed in a location other than `/usr/lib/NetworkManager`
+```bash
+sudo ln -s /usr/lib/NetworkManager/VPN/ /etc/NetworkManager/VPN
+```
