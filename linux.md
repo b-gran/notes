@@ -46,3 +46,21 @@ The flags provide different block size counting options.
 # Print the size of file.txt in kilobytes (-k => kilobytes)
 du -k file.txt
 ```
+
+## Configuring VPNs on Kali
+
+1. Install OpenVPN network manager extensions
+```bash
+sudo apt-get install network-manager-openvpn network-manager network-manager-gnome network-manager-openvpn-gnome
+```
+
+2. Grant NetworkManager permission to manage network interfaces. Only the `managed=true` bit needs to be changed, so it is probably safer to edit this file instead of rewriting.
+```bash
+cat >/etc/NetworkManager/NetworkManager.conf <<EOF
+[main]
+plugins=ifupdown,keyfile
+
+[ifupdown]
+managed=true
+EOF
+```
