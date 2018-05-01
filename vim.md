@@ -68,3 +68,29 @@ Abbreviated versions of commands can be used when they don't conflict with abbre
 > Swap the position of panes
 
 <kbd>Ctrl</kbd><kbd>w</kbd> + <kbd>r</kbd>
+
+# Keybinds and mapping
+
+### `:remap`
+An option that specifies whether `:map` should follow key bindings recursively.
+
+### `:map` vs `:noremap`
+`:map` binds a key to another key, following the bindings recursively if `:remap` is set. 
+
+#### `:map`
+```vim
+" If this binding is set
+:map y x
+
+" Then z will be bound to x (the y binding is followed recursively)
+:map z y
+```
+
+#### `:noremap`
+```vim
+" If this binding is set
+:noremap y x
+
+" Then z will be bound to y, regardless of how y is bound (the y binding is _not_ followed recursively)
+:noremap z y
+```
